@@ -23,7 +23,7 @@ namespace Boxing_Unboxing
                     intVals += (int)item;
                 }
             }
-            Console.WriteLine(intVals);
+            Console.WriteLine("Integers Sum: " + intVals);
         }
     }
 }
