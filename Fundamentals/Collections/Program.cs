@@ -30,7 +30,6 @@ namespace Collections
             for(int i = 0; i < names.Length; i++)
             {
                 int randNum = rand.Next(0, 4);
-                Console.WriteLine(randNum);
                 names_flavors.Add(names[i], flavors[randNum]);
             }
 
