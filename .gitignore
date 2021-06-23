@@ -135,6 +135,8 @@ appsettings.json
 *.ntvs*
 *.njsproj
 *.sln
+*.json
+*.Development.json
 
 # Build results
 [Dd]ebug/
@@ -147,10 +149,12 @@ build/
 bld/
 [Bb]in/
 [Oo]bj/
+Properties/
 [Oo]ut/
 msbuild.log
 msbuild.err
 msbuild.wrn
+
 
 # Angular
 /dist/
