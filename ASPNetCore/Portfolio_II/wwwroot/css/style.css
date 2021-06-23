@@ -1,0 +1,58 @@
+
+body
+{
+    background-color:burlywood;
+}
+
+.header
+{
+    margin: auto;
+    width: 50%;
+    border: 5px solid #FFFF00;
+    padding: 10px;
+    text-align: center;
+    
+}
+
+.contant 
+{
+    display: inline-flex;
+    width: 900px;
+
+}
+.left
+{
+    margin-right: 200px;
+    margin-left: 100px;
+    width: 600px;
+}
+.my-img {
+    height: 200px;
+}
+.ProjMain
+{
+    margin-top: 50px;
+    margin-left: 400px;
+}
+.form
+{
+    margin-top: 50px;
+    margin-left: 500px;
+}
+.lis
+{
+    border: black 2px solid;
+    width: 400px;
+    overflow: scroll;
+    padding: 10px;
+}
+
+.lisItem
+{
+    display: flex;
+    margin-bottom: 20px;
+}
+.proj-img img{
+    height: 50px;
+    padding-right: 5px;
+}
