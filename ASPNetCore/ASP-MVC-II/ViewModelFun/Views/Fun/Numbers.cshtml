@@ -1,0 +1,12 @@
+@model int []
+@{
+    ViewData["Title"] = "Numbers Page";
+}
+<h5> Here are sum numbers!</h5>
+<div class="nums">
+    
+    @foreach (int number in Model)
+    {
+        <p>@number</p>
+    }
+</div>
