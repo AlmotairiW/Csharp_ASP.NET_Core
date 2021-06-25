@@ -38,9 +38,6 @@ namespace ViewModelFun
                 app.UseExceptionHandler("/Home/Error");
             }
             app.UseStaticFiles();
-
-            app.UseRouting();
-
             app.UseAuthorization();
             app.UseMvc();
         }
