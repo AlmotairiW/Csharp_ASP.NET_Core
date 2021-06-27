@@ -1,0 +1,31 @@
+@model RegUser
+
+<form action="/register" method="post">
+    <div class="form-group">
+        <label class="form-label"  asp-for="FirstName"></label>
+        <input asp-for="FirstName"><br>
+        <span class="text-danger" asp-validation-for="FirstName"></span>
+    </div>
+    <div class="form-group">
+        <label class="form-label" asp-for="LastName"></label>
+        <input asp-for="LastName"><br>
+        <span class="text-danger" asp-validation-for="LastName"></span>
+    </div>
+    <div class="form-group">
+        <label class="form-label"  asp-for="Email"></label>
+        <input asp-for="Email"><br>
+        <span class="text-danger" asp-validation-for="Email"></span>
+    </div>
+    <div class="form-group">
+        <label class="form-label" asp-for="Password"></label>
+        <input asp-for="Password"><br>
+        <span class="text-danger" asp-validation-for="Password"></span>
+    </div>
+    <div class="form-group">
+        <label class="form-label" asp-for="ConPassword"></label>
+        <input asp-for="ConPassword"><br>
+        <span class="text-danger" asp-validation-for="ConPassword"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Sign up</button>
+</form>  
+
