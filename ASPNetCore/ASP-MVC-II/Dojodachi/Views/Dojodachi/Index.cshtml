@@ -1,0 +1,50 @@
+<div class="text-center">
+    <div class="pet-items">
+        <p>Fullness: @ViewBag.Fullness </p>
+        <p>Happiness: @ViewBag.Happiness</p>
+        <p>Meals: @ViewBag.Meals</p>
+        <p>Energy: @ViewBag.Energy</p>
+    </div>
+    <div class="pet">
+        @{
+            string imgSrc = "";
+            @switch (ViewBag.Activity)
+            {
+                case "sleep":
+                    imgSrc = "https://lh3.googleusercontent.com/proxy/Cfqg5DdCnrArEAV8dTL0IeddAstaBYQr9r8W9HG-SD2j83oPj8mSysySdE0FJIRYpXK4FqrTuV3VvdrUPI4lfjyf_jGOyTI7";
+                    break;
+                case "play":
+                    imgSrc = "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/9fd6d02c-7cf1-4405-a049-c9db45a7448e/dc21bry-6889ab57-be8c-4638-98be-8f6cb280fda2.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzlmZDZkMDJjLTdjZjEtNDQwNS1hMDQ5LWM5ZGI0NWE3NDQ4ZVwvZGMyMWJyeS02ODg5YWI1Ny1iZThjLTQ2MzgtOThiZS04ZjZjYjI4MGZkYTIucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.dWBBpos83LnTQKpUdM45l_OTd1PfF3VIvlKugLBB-cs";
+                    break;
+                case "work":
+                    imgSrc ="https://c.tenor.com/uCoZ_h8QmV8AAAAj/angry-pikachu.gif";
+                    break;
+                case "eat":
+                    imgSrc = "https://www.pngkit.com/png/full/1008-10082392_someones-been-eating-too-many-tacos-pikachu-pixel.png";
+                    break;
+                default: 
+                    imgSrc = "https://lh3.googleusercontent.com/proxy/p56LW4YDftePT19E5dYX-2h11gpVSHXth9Rz9rHstB7XAjfEoaf2ZltkJAptT00DzSPzHiL3PC6jGu8jXhgIr5hwlWPzZohX";
+                    break;
+            }
+        }
+        <img src= @imgSrc>
+        <p>@ViewBag.Reaction</p>
+    </div>
+    @{
+        @if (@ViewBag.Status == "alive")
+        {
+            <div class="pet-items">
+                <form asp-action="Feed" asp-Controller="Dojodachi" method="POST"> <button type="submit"> Feed</button> </form>
+                <form asp-action="Play" asp-Controller="Dojodachi" method="POST"> <button type="submit"> Play</button> </form>
+                <form asp-action="Work" asp-Controller="Dojodachi" method="POST"> <button type="submit"> Work</button> </form>
+                <form asp-action="Sleep" asp-Controller="Dojodachi" method="POST"> <button type="submit"> Sleep</button> </form>
+            </div>
+        }
+        else
+        {
+            <form asp-action="Restart" asp-Controller="Dojodachi" method="POST"> <button type="submit"> Rstart?</button> </form>
+        }
+    }
+
+
+</div>
