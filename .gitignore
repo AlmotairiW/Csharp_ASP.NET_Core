@@ -6,6 +6,7 @@ env/
 ehthumbs.db
 Icon?
 Thumbs.db
+*.db
 
 # General
 # =======
