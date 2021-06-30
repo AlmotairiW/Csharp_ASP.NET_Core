@@ -1,0 +1,38 @@
+after creating the proj:
+
+cd proj 
+
+dotnet add package Pomelo.EntityFrameworkCore.MySql --version 3.1.1
+dotnet add package Microsoft.EntityFrameworkCore.Design --version 3.1.5
+
+code .
+
+create models/context
+
+in appsettings.json:
+
+{
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft": "Warning",
+      "Microsoft.Hosting.Lifetime": "Information"
+    }
+  },
+  "AllowedHosts": "*",
+    "DBInfo":
+    {
+        "Name": "MySQLconnect",
+        "ConnectionString": "server=localhost;userid=root;password=root;port=3306;database=dbName;SslMode=None"
+    }
+}
+
+Startup.cs:
+services.AddDbContext<MyContext>(options => options.UseMySql (Configuration["DBInfo:ConnectionString"]));
+
+Dependency Injection in Controllers.
+
+Migrations:
+
+dotnet ef migrations add MyMigrationName
+dotnet ef database update

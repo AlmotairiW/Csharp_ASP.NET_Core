@@ -1,0 +1,27 @@
+@{
+    ViewData["Title"] = "View Dish";
+}
+@model Dish
+
+<a href="/">Home</a>
+
+<div class="text-center">
+    <h2>@Model.Name</h2>
+    <h4>@Model.Chef</h4>
+    <div class="view-line"></div>
+</div>
+<div class="content">
+    <p>@Model.Description</p>
+    <div class="item">
+        <p class="font-weight-bold">Calories </p> <p>: @Model.Calories</p>
+    </div>
+    <div class="item">
+    <p class="font-weight-bold">Tasiness </p> <p>: @Model.Tastines</p>
+    </div>
+    
+</div>
+
+<div class="btns">
+    <button type="button" class="btn btn-danger"><a href="/delete/@Model.DishId">Delete</a> </button>
+    <button type="button" class="btn btn-primary"><a href="/edit/@Model.DishId">Edit</a></button>
+</div>
