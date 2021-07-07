@@ -1,0 +1,61 @@
+@{
+    ViewData["Title"] = "Add a Dish";
+}
+@model Dish
+<div class="text-center">
+<h1>@ViewData["Title"]</h1>
+</div>
+
+<a href="/">Home</a>
+
+<form asp-action="CreateDish" asp-controller="Home" method="POST">
+    <div class="form-items">
+        <div class="first">
+            <div class="form-group">
+                <label asp-for="Name"></label><br>
+                <input asp-for="Name"><br>
+                <span class="text-danger" asp-validation-for="Name"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Calories"></label><br>
+                <input asp-for="Calories"><br>
+                <span class="text-danger" asp-validation-for="Calories"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Description"></label><br>
+                <textarea asp-for="Description" cols="30" rows="10" class="form-control"></textarea>
+                <span class="text-danger" asp-validation-for="Description"></span>
+            </div>
+        </div>
+
+        <div class="second">
+            <div class="form-group">
+                <label>Chef</label>
+            <select asp-for="ChefId" class="form-select">
+                @foreach (Chef c in ViewBag.allChefs)
+                {
+                <option value="@c.ChefId">@c.FirstName @c.LastName</option>
+                }
+            </select>
+            </div>
+        </div>
+
+        <div class="last">
+            <div class="form-group">
+                <label asp-for="Tastines"></label>
+            <select asp-for="Tastines" class="form-select">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+            </select>
+            </div>
+        </div>
+    </div>
+    <button class="btn btn-primary">Add Dish</button>
+    
+</form>
+

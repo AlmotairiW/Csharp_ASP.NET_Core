@@ -7,9 +7,214 @@
             <li>...all players, past and present, with the Manitoba Tiger-Cats</li>
             <li>...all players who were formerly (but aren't currently) with the Wichita Vikings</li>
             <li>...every team that Jacob Gray played for before he joined the Oregon Colts</li>
-            <li>...everyone named "Joshua" who has ever played in the Atlantic Federation of Amateur Baseball Players</li>
+            <li>...everyone named "Joshua" who has ever played in the Atlantic Federation of Amateur Baseball Players
+            </li>
             <li>...all teams that have had 12 or more players, past and present.</li>
             <li>...all players, sorted by the number of teams they've played for</li>
         </ol>
     </div>
 </div>
+
+<div class="col-sm-6">
+    <div class="card">
+        <div class="card-body">
+            <h3>all teams, past and present, that @ViewBag.EvansTeams.FirstName @ViewBag.EvansTeams.LastName has played
+                with</h3>
+            <table class="table table-striped">
+                <tr>
+                    <th>Team Name</th>
+                    <th>Team Location</th>
+                </tr>
+                @foreach (PlayerTeam pt in @ViewBag.EvansTeams.AllTeams)
+
+                {
+                    <tr>
+                        <td>@pt.TeamOfPlayer.TeamName </td>
+                        <td>@pt.TeamOfPlayer.Location</td>
+                    </tr>
+
+                }
+                <tr>
+                    <td>@ViewBag.EvansTeams.CurrentTeam.TeamName</td>
+                    <td>@ViewBag.EvansTeams.CurrentTeam.Location</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="col-sm-6">
+    <div class="card">
+        <div class="card-body">
+            <h3>all players, past and present, with the @ViewBag.AllTigerCatsPlayers.Location
+                @ViewBag.AllTigerCatsPlayers.TeamName</h3>
+            <table class="table table-striped">
+                <tr>
+                    <th>Player First Name</th>
+                    <th>Player Last Name</th>
+
+                </tr>
+                @foreach (PlayerTeam pt in @ViewBag.AllTigerCatsPlayers.AllPlayers)
+
+                {
+                    <tr>
+                        <td>@pt.PlayerOnTeam.FirstName </td>
+                        <td>@pt.PlayerOnTeam.LastName</td>
+
+                    </tr>
+
+                }
+                @foreach (Player p in @ViewBag.AllTigerCatsPlayers.CurrentPlayers)
+
+                {
+                    <tr>
+                        <td>@p.FirstName </td>
+                        <td>@p.LastName</td>
+                    </tr>
+
+                }
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="col-sm-6">
+    <div class="card">
+        <div class="card-body">
+            <h3>all players who were formerly (but aren't currently) with the @ViewBag.VikingsPlayers.Location
+                @ViewBag.VikingsPlayers.TeamName</h3>
+            <table class="table table-striped">
+                <tr>
+                    <th>Player First Name</th>
+                    <th>Player Last Name</th>
+
+                </tr>
+                @foreach (PlayerTeam pt in @ViewBag.VikingsPlayers.AllPlayers)
+
+                {
+                    <tr>
+                        <td>@pt.PlayerOnTeam.FirstName </td>
+                        <td>@pt.PlayerOnTeam.LastName</td>
+
+                    </tr>
+
+                }
+            </table>
+        </div>
+    </div>
+</div>
+<div class="col-sm-6">
+    <div class="card">
+        <div class="card-body">
+            <h3>every team that Jacob Gray played for before he joined the Oregon Colts</h3>
+            <table class="table table-striped">
+                <tr>
+                    <th>Team Name</th>
+                    <th>Team Location</th>
+
+                </tr>
+                @foreach (PlayerTeam pt in @ViewBag.JacobTeams.AllTeams)
+
+                {
+                    <tr>
+                        <td>@pt.TeamOfPlayer.TeamName </td>
+                        <td>@pt.TeamOfPlayer.Location</td>
+                    </tr>
+                }
+
+                <tr>
+                    <td>@ViewBag.JacobTeams.CurrentTeam.TeamName</td>
+                    <td>@ViewBag.JacobTeams.CurrentTeam.Location</td>
+                </tr>
+
+            </table>
+        </div>
+    </div>
+</div>
+
+
+<div class="col-sm-6">
+    <div class="card">
+        <div class="card-body">
+            <h3>everyone named "Joshua" who has ever played in the Atlantic Federation of Amateur Baseball Players</h3>
+            <table class="table table-striped">
+                <tr>
+                    <th>Player Name</th>
+                    <th>Player League</th>
+
+                </tr>
+                @foreach (Player p in ViewBag.JoshuaAFABP)
+
+                {
+                    @foreach (PlayerTeam pt in p.AllTeams)
+                    {
+
+                        if (pt.TeamOfPlayer.CurrLeague.Name == "Atlantic Federation of Amateur Baseball Players")
+
+                        {
+                            <tr>
+                                <td>@p.LastName @p.LastName</td>
+                                <td>@pt.TeamOfPlayer.CurrLeague.Name</td>
+                            </tr>
+
+                        }
+                    }
+
+                }
+            </table>
+        </div>
+    </div>
+</div>
+
+
+<div class="col-sm-6">
+    <div class="card">
+        <div class="card-body">
+            <h3>all teams that have had 12 or more players, past and present.</h3>
+            <table class="table table-striped">
+                <tr>
+                    <th>Team Name</th>
+                    <th>Number of Players</th>
+
+                </tr>
+
+                @foreach (Team t in ViewBag._12MorePlayers)
+                {
+                    int totlalPlayers = t.AllPlayers.Count + t.CurrentPlayers.Count;
+                    <tr>
+                        <td>@t.Location @t.TeamName</td>
+                        <td>@totlalPlayers</td>
+                    </tr>
+
+                }
+
+            </table>
+        </div>
+    </div>
+</div>
+
+
+<div class="col-sm-6">
+    <div class="card">
+        <div class="card-body">
+            <h3>all players, sorted by the number of teams they've played for</h3>
+            <table class="table table-striped">
+                <tr>
+                    <th>Player Name</th>
+                    <th>Number of Teams</th>
+
+                </tr>
+                @foreach (Player p in @ViewBag.AllPlayersSorted)
+
+                {
+                    <tr>
+                        <td>@p.FirstName @p.LastName</td>
+                        <td>@p.AllTeams.Count</td>
+                    </tr>
+
+                }
+            </table>
+        </div>
+    </div>
+</div>
+

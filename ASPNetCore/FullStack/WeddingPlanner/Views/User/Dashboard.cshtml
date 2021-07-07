@@ -1,0 +1,51 @@
+@model List<Wedding>
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<div class="header">
+    <h3> @ViewBag.ThisUser.FirstName, Welcome to the Wedding Planner</h3> <a href="/logout">Log Out</a>
+</div>
+<div class="main">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Wedding</th>
+                <th scope="col">Date</th>
+                <th scope="col">Guest</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+                @{
+                    foreach(Wedding w in Model)
+                    {
+                        <tr>
+                            <td><a class="blu" href="/wedding/@w.WeddingId">@w.WedderOne & @w.WedderTow</a></td>
+                            <td>@w.Date.ToString("MMM dd yyyy")</td>
+                            <td>@w.AllGuests.Count</td>
+                            @{
+                                if(@w.PlannedBy.UserId != @ViewBag.ThisUser.UserId)
+                                {
+                                    if(!@w.AllGuests.Any(uw => uw.GuestOnWedding.UserId == @ViewBag.thisUser.UserId))
+                                    {
+                                        <td><button class="btn btn-dark"><a href="/RSVP/@w.WeddingId">RSVP</a></button></td>
+                                    }
+                                    else
+                                    {
+                                        <td><button class="btn btn-dark"><a href="/unRSVP/@w.WeddingId">Un-RSVP</a></button></td>
+                                    }
+                                }
+                                else
+                                {
+                                    <td><button class="btn btn-dark"><a href="/delete/@w.WeddingId">Delete</a></button></td>
+                                }
+                            }
+                            
+                        </tr>
+                    }
+                }
+        </tbody>
+    </table>
+    <button class="btn btn-dark"><a href="/new">New Wedding</a></button>
+</div>
